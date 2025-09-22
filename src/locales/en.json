@@ -1,0 +1,35 @@
+{
+  "clients": {
+    "title": "Clients",
+    "placeholder": "Client name",
+    "add": "Add"
+  },
+  "common": {
+    "signOut": "Sign Out",
+    "changeLanguage": "Change language"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "signUp": "Sign Up",
+    "signIn": "Sign In",
+    "signedUp": "Signed up successfully",
+    "signedIn": "Signed in",
+    "signedOut": "Signed out",
+    "signedInAs": "Signed in as",
+    "forgot": "Forgot password?",
+    "resetSent": "Password reset email sent",
+    "enterEmail": "Please enter your email first",
+    "resetTitle": "Set a new password",
+    "newPassword": "New password",
+    "repeatPassword": "Repeat new password",
+    "savePassword": "Save password",
+    "passMismatch": "Passwords do not match",
+    "passTooShort": "Password must be at least 6 characters",
+    "passUpdated": "Password updated! You can continue.",
+    "backHome": "Back"
+  },
+  "welcome": {
+    "choose": "Choose your AI assistant's language"
+  }
+}

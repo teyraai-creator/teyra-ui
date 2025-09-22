@@ -1,0 +1,35 @@
+{
+  "clients": {
+    "title": "Klienten",
+    "placeholder": "Name des Klienten",
+    "add": "Hinzufügen"
+  },
+  "common": {
+    "signOut": "Abmelden",
+    "changeLanguage": "Sprache ändern"
+  },
+  "auth": {
+    "email": "E-Mail",
+    "password": "Passwort",
+    "signUp": "Registrieren",
+    "signIn": "Anmelden",
+    "signedUp": "Registrierung erfolgreich",
+    "signedIn": "Angemeldet",
+    "signedOut": "Abgemeldet",
+    "signedInAs": "Angemeldet als",
+    "forgot": "Passwort vergessen?",
+    "resetSent": "E-Mail zum Zurücksetzen gesendet",
+    "enterEmail": "Bitte zuerst die E-Mail eingeben",
+    "resetTitle": "Neues Passwort festlegen",
+    "newPassword": "Neues Passwort",
+    "repeatPassword": "Passwort wiederholen",
+    "savePassword": "Passwort speichern",
+    "passMismatch": "Passwörter stimmen nicht überein",
+    "passTooShort": "Passwort muss mindestens 6 Zeichen haben",
+    "passUpdated": "Passwort aktualisiert! Du kannst fortfahren.",
+    "backHome": "Zurück"
+  },
+  "welcome": {
+    "choose": "Wählen Sie die Sprache Ihres KI-Assistenten"
+  }
+}
