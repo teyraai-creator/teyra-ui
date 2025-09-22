@@ -1,35 +1,29 @@
 {
+  "menu": {
+    "menu": "Menü",
+    "home": "Start",
+    "clients": "Klienten",
+    "calendar": "Kalender",
+    "notes": "Notizen",
+    "reports": "Berichte",
+    "settings": "Einstellungen"
+  },
+  "top": {
+    "searchPlaceholder": "Suche nach Klienten & Notizen..."
+  },
   "clients": {
     "title": "Klienten",
-    "placeholder": "Name des Klienten",
-    "add": "Hinzufügen"
+    "addClient": "Klient hinzufügen",
+    "addCampaign": "Kampagne hinzufügen",
+    "empty": "Noch keine Klienten"
   },
-  "common": {
-    "signOut": "Abmelden",
-    "changeLanguage": "Sprache ändern"
+  "home": {
+    "quick": "Schnelle Aktionen",
+    "today": "Heute",
+    "recent": "Zuletzt geöffnet",
+    "drafts": "Entwürfe"
   },
-  "auth": {
-    "email": "E-Mail",
-    "password": "Passwort",
-    "signUp": "Registrieren",
-    "signIn": "Anmelden",
-    "signedUp": "Registrierung erfolgreich",
-    "signedIn": "Angemeldet",
-    "signedOut": "Abgemeldet",
-    "signedInAs": "Angemeldet als",
-    "forgot": "Passwort vergessen?",
-    "resetSent": "E-Mail zum Zurücksetzen gesendet",
-    "enterEmail": "Bitte zuerst die E-Mail eingeben",
-    "resetTitle": "Neues Passwort festlegen",
-    "newPassword": "Neues Passwort",
-    "repeatPassword": "Passwort wiederholen",
-    "savePassword": "Passwort speichern",
-    "passMismatch": "Passwörter stimmen nicht überein",
-    "passTooShort": "Passwort muss mindestens 6 Zeichen haben",
-    "passUpdated": "Passwort aktualisiert! Du kannst fortfahren.",
-    "backHome": "Zurück"
-  },
-  "welcome": {
-    "choose": "Wählen Sie die Sprache Ihres KI-Assistenten"
+  "footer": {
+    "copyright": "© 2025 Teyra"
   }
 }

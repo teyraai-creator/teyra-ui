@@ -1,35 +1,29 @@
 {
+  "menu": {
+    "menu": "Menu",
+    "home": "Home",
+    "clients": "Clients",
+    "calendar": "Calendar",
+    "notes": "Notes",
+    "reports": "Reports",
+    "settings": "Settings"
+  },
+  "top": {
+    "searchPlaceholder": "Search clients & notes..."
+  },
   "clients": {
     "title": "Clients",
-    "placeholder": "Client name",
-    "add": "Add"
+    "addClient": "Add client",
+    "addCampaign": "Add campaign",
+    "empty": "No clients yet"
   },
-  "common": {
-    "signOut": "Sign Out",
-    "changeLanguage": "Change language"
+  "home": {
+    "quick": "Quick actions",
+    "today": "Today",
+    "recent": "Recent clients",
+    "drafts": "Draft notes"
   },
-  "auth": {
-    "email": "Email",
-    "password": "Password",
-    "signUp": "Sign Up",
-    "signIn": "Sign In",
-    "signedUp": "Signed up successfully",
-    "signedIn": "Signed in",
-    "signedOut": "Signed out",
-    "signedInAs": "Signed in as",
-    "forgot": "Forgot password?",
-    "resetSent": "Password reset email sent",
-    "enterEmail": "Please enter your email first",
-    "resetTitle": "Set a new password",
-    "newPassword": "New password",
-    "repeatPassword": "Repeat new password",
-    "savePassword": "Save password",
-    "passMismatch": "Passwords do not match",
-    "passTooShort": "Password must be at least 6 characters",
-    "passUpdated": "Password updated! You can continue.",
-    "backHome": "Back"
-  },
-  "welcome": {
-    "choose": "Choose your AI assistant's language"
+  "footer": {
+    "copyright": "© 2025 Teyra"
   }
 }

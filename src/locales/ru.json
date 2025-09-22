@@ -1,35 +1,29 @@
 {
+  "menu": {
+    "menu": "Меню",
+    "home": "Главная",
+    "clients": "Клиенты",
+    "calendar": "Календарь",
+    "notes": "Заметки",
+    "reports": "Отчёты",
+    "settings": "Настройки"
+  },
+  "top": {
+    "searchPlaceholder": "Поиск по клиентам и заметкам..."
+  },
   "clients": {
     "title": "Клиенты",
-    "placeholder": "Имя клиента",
-    "add": "Добавить"
+    "addClient": "Добавить клиента",
+    "addCampaign": "Добавить рассылку",
+    "empty": "Пока нет клиентов"
   },
-  "common": {
-    "signOut": "Выйти",
-    "changeLanguage": "Сменить язык"
+  "home": {
+    "quick": "Быстрые действия",
+    "today": "Сегодня",
+    "recent": "Недавние",
+    "drafts": "Черновики"
   },
-  "auth": {
-    "email": "Email",
-    "password": "Пароль",
-    "signUp": "Регистрация",
-    "signIn": "Войти",
-    "signedUp": "Регистрация выполнена",
-    "signedIn": "Вход выполнен",
-    "signedOut": "Вы вышли",
-    "signedInAs": "Вы вошли как",
-    "forgot": "Забыли пароль?",
-    "resetSent": "Письмо для сброса пароля отправлено",
-    "enterEmail": "Сначала введите Email",
-    "resetTitle": "Установите новый пароль",
-    "newPassword": "Новый пароль",
-    "repeatPassword": "Повторите пароль",
-    "savePassword": "Сохранить пароль",
-    "passMismatch": "Пароли не совпадают",
-    "passTooShort": "Пароль должен быть не короче 6 символов",
-    "passUpdated": "Пароль обновлён! Можно продолжать.",
-    "backHome": "Назад"
-  },
-  "welcome": {
-    "choose": "Выберите язык AI-ассистента"
+  "footer": {
+    "copyright": "© 2025 Тейра"
   }
 }
