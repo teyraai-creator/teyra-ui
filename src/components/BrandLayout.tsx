@@ -2,6 +2,10 @@ import React from "react";
 
 type Props = {
   children: React.ReactNode;
+  active?: string;
+  leftExtra?: React.ReactNode;
+  leftAside?: React.ReactNode;
+  sidebarExtra?: React.ReactNode;
 };
 
 const wrapper: React.CSSProperties = {
@@ -18,6 +22,6 @@ const wrapper: React.CSSProperties = {
   background: "linear-gradient(135deg,#004AAD 0%,#0099FF 100%)",
 };
 
-export default function BrandLayout({ children }: Props) {
+export default function BrandLayout({ children, active, leftExtra, leftAside, sidebarExtra }: Props) {
   return <div style={wrapper}>{children}</div>;
 }

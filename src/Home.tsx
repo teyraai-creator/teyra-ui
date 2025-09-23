@@ -1,3 +1,7 @@
+import React from "react";
+import ChatWidget from "./components/ChatWidget";
+import NewsFeed from "./components/NewsFeed";
+
 type Lang = "en" | "ru" | "de";
 
 const UI = {
@@ -189,6 +193,8 @@ export default function Home() {
               <li className="sb-item">{t.menu.reports}</li>
               <li className="sb-item">{t.menu.settings}</li>
             </ul>
+            {/* Блок новостей внизу меню */}
+            <NewsFeed />
           </aside>
 
           {/* Main */}
@@ -234,6 +240,14 @@ export default function Home() {
       {/* Footer */}
       <div style={{ textAlign: "center", marginTop: "auto", marginBottom: 16, opacity: .95, fontSize: 14 }}>
         {t.footer}
+      </div>
+      {/* Чат-виджет */}
+      <div style={{ position: "relative", zIndex: 5 }}>
+        {/* импорт компонента выше в начале файла, если его нет — добавь:  */}
+        {/* import ChatWidget from "./components/ChatWidget"; */}
+        {/* а здесь отрисовываем сам виджет: */}
+        {/* @ts-ignore */}
+        <ChatWidget />
       </div>
     </div>
   );
