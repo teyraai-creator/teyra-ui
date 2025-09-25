@@ -4,6 +4,9 @@ import LanguageScreen from "./pages/LanguageScreen";
 import Auth from "./Auth";
 import Home from "./Home";
 import Clients from "./pages/Clients"; // ← ВАЖНО: правильный путь
+import Profile from "./pages/Profile";
+import Calendar from "./pages/Calendar";
+import Disk from "./pages/Disk";
 import ResetPassword from "./pages/ResetPassword";
 import { supabase } from "./lib/supabase";
 import { applyLangFromStorage } from "./i18n";
@@ -83,10 +86,19 @@ export default function App() {
         {/* 4. Главная (Dashboard) */}
         <Route path="/home" element={<Home />} />
 
-        {/* 5. Клиенты */}
+        {/* 5. Профиль */}
+        <Route path="/profile" element={<Profile />} />
+
+        {/* 6. Клиенты */}
         <Route path="/clients" element={<Clients />} />
 
-        {/* 6. Фолбэк */}
+        {/* 7. Календарь */}
+        <Route path="/calendar" element={<Calendar />} />
+
+        {/* 8. Диск */}
+        <Route path="/disk" element={<Disk />} />
+
+        {/* 9. Фолбэк */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>

@@ -1,29 +1,61 @@
 {
   "menu": {
-    "menu": "Меню",
+    "title": "Меню",
     "home": "Главная",
+    "profile": "Профиль",
     "clients": "Клиенты",
     "calendar": "Календарь",
     "notes": "Заметки",
     "reports": "Отчёты",
+    "disk": "Диск",
     "settings": "Настройки"
   },
-  "top": {
-    "searchPlaceholder": "Поиск по клиентам и заметкам..."
+  "search": {
+    "placeholder": "Поиск по клиентам и заметкам..."
   },
   "clients": {
     "title": "Клиенты",
     "addClient": "Добавить клиента",
     "addCampaign": "Добавить рассылку",
-    "empty": "Пока нет клиентов"
+    "empty": "Пока нет клиентов",
+    "form": {
+      "fullName": "ФИО",
+      "email": "Почта",
+      "phone": "Телефон",
+      "save": "Сохранить",
+      "cancel": "Отмена"
+    }
+  },
+  "profile": {
+    "title": "Профиль пользователя",
+    "fullName": "ФИО",
+    "phone": "Телефон",
+    "plan": "Тарифный план",
+    "signOut": "Выйти из системы",
+    "loading": "Загрузка...",
+    "notAuthorized": "Не авторизован"
   },
   "home": {
+    "welcome": "Добро пожаловать на главную страницу Teyra!",
     "quick": "Быстрые действия",
     "today": "Сегодня",
-    "recent": "Недавние",
+    "recent": "Недавние клиенты",
     "drafts": "Черновики"
   },
+  "news": {
+    "title": "Новости"
+  },
+  "auth": {
+    "signIn": "Войти",
+    "signUp": "Зарегистрироваться",
+    "forgotPassword": "Забыли пароль?",
+    "email": "Почта",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "emailVerification": "Подтверждение почты",
+    "checkEmail": "Проверьте почту для подтверждения регистрации"
+  },
   "footer": {
-    "copyright": "© 2025 Тейра"
+    "copyright": "© 2025 Teyra"
   }
 }

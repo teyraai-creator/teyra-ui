@@ -1,27 +1,59 @@
 {
   "menu": {
-    "menu": "Menü",
+    "title": "Menü",
     "home": "Start",
+    "profile": "Profil",
     "clients": "Klienten",
     "calendar": "Kalender",
     "notes": "Notizen",
     "reports": "Berichte",
+    "disk": "Festplatte",
     "settings": "Einstellungen"
   },
-  "top": {
-    "searchPlaceholder": "Suche nach Klienten & Notizen..."
+  "search": {
+    "placeholder": "Suche nach Klienten & Notizen..."
   },
   "clients": {
     "title": "Klienten",
     "addClient": "Klient hinzufügen",
     "addCampaign": "Kampagne hinzufügen",
-    "empty": "Noch keine Klienten"
+    "empty": "Noch keine Klienten",
+    "form": {
+      "fullName": "Vollständiger Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "save": "Speichern",
+      "cancel": "Abbrechen"
+    }
+  },
+  "profile": {
+    "title": "Benutzerprofil",
+    "fullName": "Vollständiger Name",
+    "phone": "Telefon",
+    "plan": "Tarifplan",
+    "signOut": "Abmelden",
+    "loading": "Laden...",
+    "notAuthorized": "Nicht autorisiert"
   },
   "home": {
+    "welcome": "Willkommen auf der Teyra Hauptseite!",
     "quick": "Schnelle Aktionen",
     "today": "Heute",
     "recent": "Zuletzt geöffnet",
     "drafts": "Entwürfe"
+  },
+  "news": {
+    "title": "Nachrichten"
+  },
+  "auth": {
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "forgotPassword": "Passwort vergessen?",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "emailVerification": "E-Mail-Bestätigung",
+    "checkEmail": "Überprüfen Sie Ihre E-Mail zur Registrierungsbestätigung"
   },
   "footer": {
     "copyright": "© 2025 Teyra"

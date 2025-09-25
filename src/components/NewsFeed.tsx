@@ -1,5 +1,6 @@
 // src/components/NewsFeed.tsx
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 /**
  * Блок "Новости" для узкой левой колонки.
@@ -44,6 +45,7 @@ export default function NewsFeed({
 }: {
   items?: Item[];
 }): JSX.Element {
+  const { t } = useTranslation();
   return (
     <aside className="nf">
       <style>{`
@@ -91,7 +93,7 @@ export default function NewsFeed({
         }
       `}</style>
 
-      <h3>Новости:</h3>
+      <h3>{t("news.title")}:</h3>
 
       <div className="list">
         {items.map((n) => (

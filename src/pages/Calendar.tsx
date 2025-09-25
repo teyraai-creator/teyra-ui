@@ -1,5 +1,6 @@
-// src/pages/Clients.tsx
+// src/pages/Calendar.tsx
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { supabase } from "../lib/supabase";
 import { clientService, type Client } from "../lib/database";
@@ -7,9 +8,10 @@ import { applyLangFromStorage } from "../i18n";
 import Menu from "../components/Menu";
 import NewsFeed from "../components/NewsFeed";
 import AIAssistant from "../components/AIAssistant";
-import ClientForm from "../components/ClientForm";
+import SimpleCalendar from "../components/SimpleCalendar";
 
-export default function Clients() {
+export default function CalendarPage() {
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   // Принудительно применяем язык при загрузке компонента
@@ -19,10 +21,8 @@ export default function Clients() {
 
   const [clients, setClients] = useState<Client[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showForm, setShowForm] = useState(false);
-  const [saving, setSaving] = useState(false);
 
-  // Загружаем клиентов из базы данных
+  // Загружаем клиентов для формы событий
   useEffect(() => {
     const loadClients = async () => {
       try {
@@ -40,38 +40,16 @@ export default function Clients() {
     loadClients();
   }, []);
 
-  const handleAddClient = () => {
-    setShowForm(true);
-  };
 
-  const handleSubmitClient = async (clientData: { display_name: string; tags?: any }) => {
-    setSaving(true);
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const newClient = await clientService.createClient(user.id, clientData);
-        if (newClient) {
-          setClients(prev => [newClient, ...prev]);
-          setShowForm(false);
-        }
-      }
-    } catch (error) {
-      console.error('Error creating client:', error);
-      alert("Ошибка при создании клиента");
-    } finally {
-      setSaving(false);
-    }
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    navigate("/language");
   };
-
-  const handleCancelForm = () => {
-    setShowForm(false);
-  };
-
 
   return (
-    <div className="clients">
+    <div className="calendar-page">
       <style>{`
-        .clients {
+        .calendar-page {
           min-height: 100vh;
           background: linear-gradient(135deg,#004AAD 0%,#0099FF 100%);
           display: grid;
@@ -109,7 +87,7 @@ export default function Clients() {
         /* Правая колонка */
         .right {
           display: grid;
-          grid-template-rows: auto auto auto;
+          grid-template-rows: auto 1fr;
           gap: 16px;
           align-content: start;
         }
@@ -151,37 +129,6 @@ export default function Clients() {
           box-shadow: 0 8px 20px rgba(0,0,0,.20) inset;
         }
 
-        /* Действия — без подложки */
-        .actions { display:flex; align-items:center; gap:12px; padding: 0; }
-        .btn {
-          padding: 10px 14px;
-          border-radius: 999px;
-          border: 1px solid rgba(255,255,255,.35);
-          background: rgba(255,255,255,.18);
-          color: #fff;
-          cursor: pointer;
-          display:flex; align-items:center; gap:8px;
-        }
-        .btn:hover { background: rgba(255,255,255,.26); }
-
-        /* Список клиентов — естественная высота */
-        .content {
-          border-radius: 20px;
-          background: rgba(255,255,255,.10);
-          border: 1px solid rgba(255,255,255,.16);
-          box-shadow: 0 12px 28px rgba(0,0,0,.22);
-          padding: 12px;
-        }
-        .empty { opacity: .9; }
-        .client-row{
-          display:flex; align-items:center; justify-content:space-between;
-          padding:10px 12px; border-radius:12px; margin-bottom:8px;
-          background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.16);
-        }
-        .client-name { font-weight:600; }
-        .client-email { opacity:.9; }
-        .client-phone { opacity:.8; font-size:14px; }
-
         /* Футер — чуть выше экрана */
         .footer {
           grid-column: 1 / -1;
@@ -189,7 +136,7 @@ export default function Clients() {
           opacity: .95;
           font-size: 14px;
           margin-top: 8px;
-          margin-bottom: 14px; /* поднимаем футер чуть выше */
+          margin-bottom: 14px;
         }
 
         @media (max-width: 1100px) {
@@ -199,11 +146,11 @@ export default function Clients() {
           .tops        { display:none; }
         }
         @media (max-width: 1024px) {
-          .clients { grid-template-columns: 1fr; }
+          .calendar-page { grid-template-columns: 1fr; }
         }
       `}</style>
 
-      {/* Левая колонка */}
+      {/* Левая колонка: меню + новости */}
       <div className="left">
         <Menu />
         <div className="card">
@@ -218,9 +165,9 @@ export default function Clients() {
             <img src="/teyra-logo.png" alt="TEYRA" />
           </div>
 
-                  <div className="search">
-                    <input type="text" placeholder={t("search.placeholder")} />
-                  </div>
+          <div className="search">
+            <input type="text" placeholder={t("search.placeholder")} />
+          </div>
 
           <div className="tops">
             <div className="dot" />
@@ -229,40 +176,20 @@ export default function Clients() {
           </div>
         </div>
 
-                <div className="actions">
-                  <button className="btn" onClick={handleAddClient}>+ {t("clients.addClient")}</button>
-                  <button className="btn">📄 {t("clients.addCampaign")}</button>
-                </div>
-
-        <div className="content">
-          {loading ? (
-            <div className="empty">Загрузка клиентов...</div>
-          ) : clients.length === 0 ? (
-            <div className="empty">{t("clients.empty")}</div>
-          ) : (
-            clients.map((c) => (
-              <div className="client-row" key={c.id}>
-                <div className="client-name">{c.display_name}</div>
-                {c.tags && <div className="client-tags">{JSON.stringify(c.tags)}</div>}
-              </div>
-            ))
-          )}
-        </div>
+        {/* Календарь */}
+        {loading ? (
+          <div className="card" style={{ padding: '40px', textAlign: 'center' }}>
+            Загрузка календаря...
+          </div>
+        ) : (
+          <SimpleCalendar clients={clients} />
+        )}
       </div>
 
       <div className="footer">{t("footer.copyright")}</div>
 
       {/* AI-ассистент в правом нижнем углу */}
       <AIAssistant />
-
-      {/* Форма добавления клиента */}
-      {showForm && (
-        <ClientForm
-          onSubmit={handleSubmitClient}
-          onCancel={handleCancelForm}
-          loading={saving}
-        />
-      )}
     </div>
   );
 }

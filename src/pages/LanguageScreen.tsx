@@ -1,15 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { changeLanguage } from "../i18n";
 
 export default function LanguageScreen() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState<string | null>(null);
 
-  const pick = (lang: "en" | "ru" | "de") => {
+  const pick = async (lang: "en" | "ru" | "de") => {
     if (loading) return;
     setLoading(lang);
     try {
-      localStorage.setItem("teyra_lang", lang);
+      // Сохраняем язык и применяем его
+      await changeLanguage(lang);
+      // Небольшая задержка, чтобы i18n успел примениться
+      await new Promise(resolve => setTimeout(resolve, 100));
     } finally {
       navigate("/auth");
     }

@@ -1,19 +1,17 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { supabase } from "./lib/supabase";
-
-type Lang = "en" | "ru" | "de";
-
-const UI = {
-  en: { email: "Email", password: "Password", forgot: "Forgot password?", signup: "Create account", signin: "Sign in", sent: "Reset link sent to email", err: "Error" },
-  ru: { email: "Почта", password: "Пароль", forgot: "Забыли пароль?", signup: "Регистрация", signin: "Вход", sent: "Ссылка для сброса отправлена на почту", err: "Ошибка" },
-  de: { email: "E-Mail", password: "Passwort", forgot: "Passwort vergessen?", signup: "Registrieren", signin: "Anmelden", sent: "Link zum Zurücksetzen gesendet", err: "Fehler" },
-} as const;
+import { applyLangFromStorage } from "./i18n";
 
 export default function Auth() {
   const navigate = useNavigate();
-  const lang = (localStorage.getItem("teyra_lang") as Lang) || "ru";
-  const t = UI[lang];
+  const { t } = useTranslation();
+
+  // Принудительно применяем язык при загрузке компонента
+  useEffect(() => {
+    applyLangFromStorage();
+  }, []);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,13 +24,17 @@ export default function Auth() {
     if (loading || !canSubmit) return;
     setLoading("up"); setMsg(null);
     try {
-      const { error } = await supabase.auth.signUp({ email, password });
+      const { error } = await supabase.auth.signUp({ 
+        email, 
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/home`
+        }
+      });
       if (error) throw error;
-      const { error: inErr } = await supabase.auth.signInWithPassword({ email, password });
-      if (inErr) throw inErr;
-      navigate("/home", { replace: true }); // ← сюда
+      setMsg({ type: "ok", text: t("auth.checkEmail") });
     } catch (e: any) {
-      setMsg({ type: "err", text: e?.message || t.err });
+      setMsg({ type: "err", text: e?.message || t("auth.emailVerification") });
     } finally { setLoading(null); }
   };
 
@@ -44,7 +46,7 @@ export default function Auth() {
       if (error) throw error;
       navigate("/home", { replace: true }); // ← и сюда
     } catch (e: any) {
-      setMsg({ type: "err", text: e?.message || t.err });
+      setMsg({ type: "err", text: e?.message || t("auth.emailVerification") });
     } finally { setLoading(null); }
   };
 
@@ -56,9 +58,9 @@ export default function Auth() {
         redirectTo: `${window.location.origin}/reset-password`,
       });
       if (error) throw error;
-      setMsg({ type: "ok", text: t.sent });
+      setMsg({ type: "ok", text: t("auth.checkEmail") });
     } catch (e: any) {
-      setMsg({ type: "err", text: e?.message || t.err });
+      setMsg({ type: "err", text: e?.message || t("auth.emailVerification") });
     } finally { setLoading(null); }
   };
 
@@ -128,42 +130,42 @@ export default function Auth() {
       {/* Центр — форма */}
       <div className="wrap" style={{ flexGrow: 1, display: "flex", alignItems: "flex-start", justifyContent: "center", marginTop: -20 }}>
         <div className="card" style={{ width: "100%" }}>
-          <div className="muted" style={{ marginBottom: 8 }}>{t.email}</div>
+          <div className="muted" style={{ marginBottom: 8 }}>{t("auth.email")}</div>
           <input
             className="control input"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder={t.email}
+            placeholder={t("auth.email")}
             autoComplete="email"
           />
 
           <div className="spacer" />
 
-          <div className="muted" style={{ marginBottom: 8 }}>{t.password}</div>
+          <div className="muted" style={{ marginBottom: 8 }}>{t("auth.password")}</div>
           <input
             className="control input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder={t.password}
+            placeholder={t("auth.password")}
             autoComplete="current-password"
           />
 
           <div style={{ textAlign: "center", marginTop: 10 }}>
             <span className="link" onClick={handleForgot}>
-              {loading === "reset" ? "…" : t.forgot}
+              {loading === "reset" ? "…" : t("auth.forgotPassword")}
             </span>
           </div>
 
           <div className="spacer" />
 
           <button className="control pill" onClick={handleSignUp} disabled={!canSubmit || !!loading}>
-            {loading === "up" ? "…" : t.signup}
+            {loading === "up" ? "…" : t("auth.signUp")}
           </button>
           <div className="spacer" />
           <button className="control pill" onClick={handleSignIn} disabled={!canSubmit || !!loading}>
-            {loading === "in" ? "…" : t.signin}
+            {loading === "in" ? "…" : t("auth.signIn")}
           </button>
 
           {msg && (
