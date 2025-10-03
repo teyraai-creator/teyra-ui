@@ -215,6 +215,7 @@ export default function Disk() {
     setShowAddMenu(false);
     setShowSubmenu(null);
     // Здесь можно добавить логику создания Google Docs
+    return "";
   };
 
   // Закрываем контекстное меню при клике вне его
@@ -744,7 +745,6 @@ export default function Disk() {
               
               {showAddMenu && (
                 <div className="dropdown-menu" onClick={(e) => e.stopPropagation()}>
-                  {console.log('Rendering dropdown menu, showAddMenu:', showAddMenu)}
                   <div className="dropdown-item" onClick={(e) => { e.stopPropagation(); handleFileUpload(); }}>
                     📄 Файл
                   </div>

@@ -56,8 +56,8 @@ export default function Profile() {
             }
           }
         }
-      } catch (error) {
-        console.error('Error loading user data:', error);
+    } catch (error: string | null) {
+      console.error('Error loading user data:', error);
       } finally {
         setLoading(false);
       }
@@ -93,9 +93,10 @@ export default function Profile() {
       } else {
         alert("Ошибка: профиль не был сохранен");
       }
-    } catch (error) {
+    } catch (error: string | null) {
       console.error('Error saving profile:', error);
-      alert("Ошибка при сохранении профиля: " + error.message);
+      const errMessage = error ?? 'Unknown error';
+      alert("Ошибка при сохранении профиля: " + errMessage);
     } finally {
       setSaving(false);
     }

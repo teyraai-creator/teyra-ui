@@ -1,13 +1,21 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext",
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
-    "strict": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
